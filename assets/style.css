@@ -262,6 +262,13 @@ nav.primary-nav a[aria-current="page"] {
     background: #000;
 }
 
+@media (min-width: 721px) {
+    .video-embed {
+        max-width: 900px;
+        margin: 0 clamp(20px, 5vw, 64px);
+    }
+}
+
 .video-embed iframe,
 .video-embed video {
     position: absolute;
