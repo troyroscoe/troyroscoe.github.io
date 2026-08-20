@@ -41,7 +41,21 @@ img, video { max-width: 100%; display: block; }
     justify-content: space-between;
     padding: 20px clamp(20px, 4vw, 48px);
     background: linear-gradient(to bottom, rgba(10,10,10,0.92), rgba(10,10,10,0));
+}
+
+/* Blur lives on a pseudo-element rather than directly on .site-header.
+   backdrop-filter on an ancestor creates a new containing block for any
+   position:fixed descendant (like the mobile nav panel below), which was
+   pinning the mobile menu to the header's own (short) box instead of the
+   full viewport and pushing "Work" off-screen. Keeping the blur on ::before
+   preserves the look without affecting how nav.primary-nav is positioned. */
+.site-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 .wordmark {
@@ -134,11 +148,11 @@ nav.primary-nav a[aria-current="page"] {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0.92);
-        background: rgba(10,10,10,0.78);
-        border: 1px solid rgba(244,244,242,0.5);
-        color: var(--ink);
+        background: var(--ink);
+        border: 1px solid var(--ink);
+        color: var(--bg);
         font-size: 12px;
-        font-weight: 600;
+        font-weight: 700;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         padding: 13px 24px;
@@ -599,7 +613,6 @@ footer.site-footer span:last-of-type { order: 3; }
         z-index: 100;
         background: #0a0a0a;
         opacity: 1;
-        backdrop-filter: none;
         flex-direction: column;
         justify-content: center;
         padding: 24px;
