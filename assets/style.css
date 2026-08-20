@@ -127,7 +127,8 @@ nav.primary-nav a[aria-current="page"] {
     display: block;
 }
 
-.work-tile img {
+.work-tile img,
+.work-tile video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -136,7 +137,8 @@ nav.primary-nav a[aria-current="page"] {
     filter: grayscale(35%) brightness(0.82);
 }
 
-.work-tile:hover img {
+.work-tile:hover img,
+.work-tile:hover video {
     transform: scale(1.05);
     filter: grayscale(0%) brightness(0.95);
 }
@@ -148,24 +150,30 @@ nav.primary-nav a[aria-current="page"] {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) scale(0.92);
-        background: var(--ink);
-        border: 1px solid var(--ink);
-        color: var(--bg);
+        background: rgba(10,10,10,0.78);
+        border: 1px solid rgba(244,244,242,0.5);
+        color: var(--ink);
         font-size: 12px;
-        font-weight: 700;
+        font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
         padding: 13px 24px;
         border-radius: 999px;
         opacity: 0;
-        transition: opacity .25s ease, transform .25s ease;
-        pointer-events: none;
+        transition: opacity .25s ease, transform .25s ease, background .15s ease, border-color .15s ease, color .15s ease;
+        pointer-events: auto;
         white-space: nowrap;
         z-index: 5;
     }
     .work-tile:hover::after {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
+    }
+    /* Highlight the pill itself (not just the tile) when the cursor is over it */
+    .work-tile::after:hover {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: var(--bg);
     }
 }
 
