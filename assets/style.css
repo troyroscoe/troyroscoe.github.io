@@ -264,8 +264,9 @@ nav.primary-nav a[aria-current="page"] {
 
 @media (min-width: 721px) {
     .video-embed {
-        max-width: 900px;
-        margin: 0 clamp(20px, 5vw, 64px);
+        width: calc(100% - clamp(40px, 10vw, 128px));
+        max-width: 1100px;
+        margin: 0 auto;
     }
 }
 
