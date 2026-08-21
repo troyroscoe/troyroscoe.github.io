@@ -393,6 +393,7 @@ nav.primary-nav a[aria-current="page"] {
     height: auto;
     display: block;
     filter: grayscale(30%) brightness(0.85);
+    cursor: zoom-in;
 }
 
 .showcase-gallery .showcase-placeholder {
@@ -417,6 +418,71 @@ nav.primary-nav a[aria-current="page"] {
     .showcase-gallery .showcase-img {
         margin: 0 0 8px;
     }
+}
+
+/* ---------- Lightbox ---------- */
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background: #050505;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .25s ease;
+    padding: clamp(20px, 6vw, 60px);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-overlay .lightbox-img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    filter: none;
+    cursor: default;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: clamp(14px, 3vw, 28px);
+    right: clamp(14px, 3vw, 28px);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,244,242,0.4);
+    background: rgba(10,10,10,0.7);
+    color: var(--ink);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: background .15s ease, border-color .15s ease, transform .15s ease;
+    z-index: 1001;
+}
+
+.lightbox-close:hover {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+    transform: scale(1.06);
+}
+
+body.lightbox-open {
+    overflow: hidden;
 }
 
 /* ---------- About page ---------- */

@@ -26,3 +26,46 @@ document.addEventListener('DOMContentLoaded', function () {
           });
     });
 });
+
+/* ---------- Gallery lightbox ---------- */
+document.addEventListener('DOMContentLoaded', function () {
+    var galleryImgs = document.querySelectorAll('.showcase-gallery .showcase-img img');
+    if (!galleryImgs.length) return;
+
+    var overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.innerHTML = '<button type="button" class="lightbox-close" aria-label="Close">&times;</button><img class="lightbox-img" src="" alt="">';
+    document.body.appendChild(overlay);
+
+    var overlayImg = overlay.querySelector('.lightbox-img');
+    var closeBtn = overlay.querySelector('.lightbox-close');
+
+    function openLightbox(src, alt) {
+        overlayImg.src = src;
+        overlayImg.alt = alt || '';
+        overlay.classList.add('active');
+        document.body.classList.add('lightbox-open');
+    }
+
+    function closeLightbox() {
+        overlay.classList.remove('active');
+        document.body.classList.remove('lightbox-open');
+        overlayImg.src = '';
+    }
+
+    galleryImgs.forEach(function (img) {
+        img.addEventListener('click', function () {
+            openLightbox(img.currentSrc || img.src, img.alt);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+
+    overlay.addEventListener('click', function (e) {
+        if (e.target === overlay) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('active')) closeLightbox();
+    });
+});
