@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Iceberg&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/style.css?v=20260820">
+<link rel="stylesheet" href="/assets/style.css?v=20260821">
 </head>
 <body>
 
@@ -30,13 +30,9 @@
   </div>
 
   <div class="video-embed">
-    <div class="video-placeholder">
-      <div>The reel is hosted on Troy's previous site's video player, which can't be embedded directly here yet.</div>
-      <div style="margin-top:14px;">
-        <a href="https://www.troyroscoe.com/showreel" target="_blank" rel="noopener" class="back-top" style="display:inline-flex;">Watch the showreel &rarr;</a>
-      </div>
-      <div style="margin-top:14px; font-size:12px;">Send over the reel file or a YouTube / Vimeo link and this'll embed directly on the page.</div>
-    </div>
+    <video controls playsinline preload="metadata" poster="/assets/img/showreel-poster.jpg" style="object-fit:contain;background:#000;">
+      <source src="/assets/video/showreel.mp4" type="video/mp4">
+    </video>
   </div>
 
   <a class="back-link" href="/">&larr; Back to work</a>
