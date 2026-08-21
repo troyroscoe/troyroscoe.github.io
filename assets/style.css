@@ -73,7 +73,7 @@ img, video { max-width: 100%; display: block; }
 .wordmark span { color: var(--muted); }
 
 .logo {
-    height: 44px;
+    height: 36px;
     width: auto;
     display: block;
 }
@@ -226,7 +226,7 @@ nav.primary-nav a[aria-current="page"] {
 /* ---------- Project page ---------- */
 
 .project-header {
-    padding: 140px clamp(20px, 5vw, 64px) 40px;
+    padding: 92px clamp(20px, 5vw, 64px) 40px;
     max-width: 900px;
 }
 
@@ -704,7 +704,7 @@ footer.site-footer span:last-of-type { order: 3; }
   body.nav-open { overflow: hidden; }
 
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
-    .project-header { padding-top: 110px; }
+    .project-header { padding-top: 28px; }
     .about-wrap { padding-top: 110px; }
     .contact-wrap { padding-top: 110px; }
 }
