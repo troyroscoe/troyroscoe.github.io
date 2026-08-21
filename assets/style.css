@@ -144,8 +144,7 @@ nav.primary-nav a[aria-current="page"] {
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .work-tile::after {
-        content: "▶  Watch Video";
+    .watch-pill {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -164,13 +163,15 @@ nav.primary-nav a[aria-current="page"] {
         pointer-events: auto;
         white-space: nowrap;
         z-index: 5;
+        display: inline-block;
     }
-    .work-tile:hover::after {
+    .work-tile:hover .watch-pill {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
     }
-    /* Highlight the pill itself (not just the tile) when the cursor is over it */
-    .work-tile::after:hover {
+    /* Highlight and invert the pill itself when the cursor is directly over it */
+    .watch-pill:hover {
+        transform: translate(-50%, -50%) scale(1.08);
         background: var(--ink);
         border-color: var(--ink);
         color: var(--bg);
