@@ -347,9 +347,11 @@ nav.primary-nav a[aria-current="page"] {
     border-radius: 999px;
     transition: background .15s ease, border-color .15s ease, transform .15s ease;
 }
-.back-top:hover {
-    background: #1c1c1a;
-    border-color: var(--muted);
+.back-top:hover,
+.back-top:focus-visible {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
     transform: translateX(-2px);
 }
 
