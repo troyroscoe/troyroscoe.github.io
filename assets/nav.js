@@ -69,3 +69,37 @@ document.addEventListener('DOMContentLoaded', function () {
         if (e.key === 'Escape' && overlay.classList.contains('active')) closeLightbox();
     });
 });
+
+/* ---------- Back-to-work: return to previous scroll position ----------
+   1) The homepage remembers its own scroll position (sessionStorage) right
+      before a work-tile is opened, and restores it on the next load — this
+      is the reliable fix and doesn't depend on browser scroll-restoration.
+   2) "Back to work" links use history.back() when we know we came from this
+      site, so the browser's own back/forward navigation is used instead of
+      a fresh "/" page load where possible. */
+document.addEventListener('DOMContentLoaded', function () {
+    var isHome = document.querySelector('.work-grid');
+    if (isHome) {
+        var savedY = sessionStorage.getItem('homeScrollY');
+        if (savedY !== null) {
+            window.scrollTo(0, parseInt(savedY, 10) || 0);
+            sessionStorage.removeItem('homeScrollY');
+        }
+        document.querySelectorAll('.work-grid a.work-tile').forEach(function (tile) {
+            tile.addEventListener('click', function () {
+                sessionStorage.setItem('homeScrollY', window.scrollY);
+            });
+        });
+    }
+
+    var backLinks = document.querySelectorAll('a.back-top, a.back-link');
+    backLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            if (window.history.length > 1 && document.referrer && document.referrer.indexOf(location.origin) === 0) {
+                e.preventDefault();
+                window.history.back();
+            }
+            /* otherwise fall through to the normal href="/" navigation */
+        });
+    });
+});
